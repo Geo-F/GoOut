@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="GoOut — βρες την έξοδο που σου ταιριάζει, από τον πρωινό καφέ μέχρι το τελευταίο ποτό. Διαδραστικό φοιτητικό demo.">
+  <title>GoOut — Η έξοδος που σου ταιριάζει</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <script src="data.js?v=2" defer></script>
+  <script src="recommender.js?v=2" defer></script>
+  <script src="app.js?v=2" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Πήγαινε στο περιεχόμενο</a>
+  <div class="phone-shell">
+  <div class="device-viewport">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#discover" class="wordmark" aria-label="GoOut, αρχική"><span class="brand-mark" aria-hidden="true">g<span>↗</span></span>goout<span class="brand-dot">.</span></a>
+      <nav class="desktop-nav" aria-label="Κύρια πλοήγηση">
+        <button data-page="discover" class="nav-link active">Ανακάλυψε</button>
+        <button data-page="saved" class="nav-link">Αγαπημένα <span class="saved-count">0</span></button>
+        <button data-page="taste" class="nav-link">Το γούστο μου</button>
+      </nav>
+      <div class="header-end"><span class="demo-pill"><i></i> Demo</span><button class="avatar" data-page="taste" aria-label="Το γούστο μου">G</button></div>
+    </div>
+  </header>
+  <main id="main" class="app-shell" tabindex="-1">
+    <section id="discover-page" aria-label="Ανακάλυψε την έξοδό σου">
+      <div class="hero">
+        <img class="hero-photo" src="assets/food.jpg" alt="Ατμόσφαιρα ενός φωτεινού εστιατορίου" fetchpriority="high">
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow"><span class="tiny-sun">✳</span> Η ΠΟΛΗ ΕΧΕΙ ΚΑΤΙ ΓΙΑ ΣΕΝΑ</p>
+          <h1>Πού πάμε<br><em>σήμερα;</em></h1>
+          <p class="hero-description">Για καφέ, φαγητό ή ένα ποτό.<br>Η επόμενη έξοδος στα μέτρα σου.</p>
+        </div>
+        <div class="hero-note"><span class="note-icon">↗</span><p>Το σωστό μέρος.<br><strong>Τη δική σου ώρα.</strong></p><span class="note-dots">● ● ●</span></div>
+      </div>
+
+      <div class="occasion-row"><p>Τι έχεις στο μυαλό σου;</p><div class="occasion-buttons">
+        <button class="occasion active" data-preset="food"><span data-icon="food"></span>Για φαγητό</button>
+        <button class="occasion" data-preset="coffee"><span data-icon="coffee"></span>Για καφέ</button>
+        <button class="occasion" data-preset="bar"><span data-icon="bar"></span>Για ποτό</button>
+      </div><span class="occasion-note">Εσύ διαλέγεις τη διάθεση. Εμείς το μέρος.</span></div>
+
+      <div class="discovery-layout">
+        <button id="open-filters" class="search-summary" aria-haspopup="dialog" aria-controls="filters-dialog"><span data-icon="pin"></span><span class="summary-text"><strong id="summary-title">Παγκράτι · Σήμερα, 14:00</strong><span id="summary-subtitle">Φαγητό · έως 30€ / άτομο</span></span><span class="summary-edit"><span data-icon="sort"></span>Αλλαγή</span></button>
+
+        <section class="results-section" aria-labelledby="results-title">
+          <div class="results-heading"><div><p class="eyebrow dark">ΛΙΓΟΤΕΡΟ ΨΑΞΙΜΟ, ΠΕΡΙΣΣΟΤΕΡΗ ΕΞΟΔΟΣ</p><h2 id="results-title" tabindex="-1">Οι προτάσεις σου <span id="results-count"></span></h2></div><button class="icon-button help-button" id="how-it-works" aria-label="Πώς επιλέγονται οι προτάσεις"><span data-icon="info"></span></button></div>
+          <div class="results-meta"><div id="active-filters" class="active-filters"></div><span class="sort-label"><span data-icon="sort"></span> Καλύτερο ταίριασμα</span></div>
+          <div id="recommendation-insight" class="insight"></div>
+          <div id="results-grid" class="venue-grid"></div>
+          <div id="results-empty" class="empty-state" hidden></div>
+          <div class="results-end"><span class="mini-brand">g↗</span><p>Το επόμενο αγαπημένο σου μέρος<br>μπορεί να είναι λίγο πιο δίπλα.</p></div>
+        </section>
+      </div>
+    </section>
+    <section id="saved-page" class="secondary-page" hidden><p class="eyebrow dark">ΜΕΡΗ ΠΟΥ ΘΕΛΕΙΣ ΝΑ ΘΥΜΑΣΑΙ</p><h1 tabindex="-1">Τα αγαπημένα σου<span class="green-dot">.</span></h1><p class="page-description">Μια μικρή συλλογή για την επόμενη έξοδο.</p><div id="saved-grid" class="venue-grid"></div></section>
+    <section id="taste-page" class="secondary-page" hidden><p class="eyebrow dark">ΟΙ ΕΞΟΔΟΙ ΣΟΥ, ΤΟ ΓΟΥΣΤΟ ΣΟΥ</p><h1 tabindex="-1">Όλο και πιο εσύ<span class="green-dot">.</span></h1><p class="page-description">Πες μας τι σου αρέσει και οι επόμενες προτάσεις θα σου ταιριάζουν περισσότερο.</p><div id="taste-content"></div></section>
+    <footer class="site-footer"><a href="#discover" class="footer-wordmark">goout.</a><p>
+      Ενδεικτικά μαγαζιά, τιμές και ωράρια.<br>Ίδιο πρόγραμμα για όλες τις ημέρες · Οι φωτογραφίες είναι ενδεικτικές.</p><span>Λίγο πιο έξω. Λίγο πιο εσύ.</span></footer>
+  </main>
+  </div>
+  <nav class="mobile-nav" aria-label="Πλοήγηση κινητού"><button data-page="discover" class="active"><span data-icon="compass"></span><span>Ανακάλυψε</span></button><button data-page="saved"><span data-icon="heart"></span><span>Αγαπημένα <b class="saved-count">0</b></span></button><button data-page="taste"><span data-icon="user"></span><span>Το γούστο μου</span></button></nav>
+  </div>
+  <dialog id="filters-dialog" aria-labelledby="filters-title"><div class="sheet-heading"><span></span><button class="icon-button" id="close-filters" aria-label="Κλείσιμο φίλτρων"><span data-icon="close"></span></button></div>
+        <aside class="filters-panel" id="filters-panel">
+          <div class="panel-heading"><div><span class="eyebrow dark">ΑΣ ΤΟ ΚΑΝΟΥΜΕ ΔΙΚΟ ΣΟΥ</span><h2 id="filters-title">Η έξοδός σου</h2></div><button id="reset-filters" class="text-button">Επαναφορά</button></div>
+          <form id="preferences-form">
+            <div class="field"><label for="area"><span data-icon="pin"></span>Πού θέλεις να πας;</label><select id="area" name="area"><option value="Παγκράτι">Παγκράτι</option><option value="Κουκάκι">Κουκάκι</option><option value="Ψυρρή">Ψυρρή</option><option value="all">Όλες οι περιοχές</option></select></div>
+            <div class="fields-row"><div class="field"><label for="day">Ημέρα</label><select id="day" name="day"><option value="today">Σήμερα</option><option value="tomorrow">Αύριο</option><option value="saturday">Σάββατο</option></select></div><div class="field time-field"><label for="time">Ώρα άφιξης</label><input type="time" id="time" name="time" value="14:00" required></div></div>
+            <div class="field budget-field"><label for="budget">Μέχρι πόσα ανά άτομο;<output id="budget-value" for="budget">30€</output></label><input id="budget" name="budget" type="range" min="10" max="50" step="5" value="30"><div class="range-labels"><span>10€</span><span>50€</span></div></div>
+            <fieldset><legend>Οπωσδήποτε να έχει</legend><p class="field-hint">Αυτά δεν τα διαπραγματευόμαστε.</p><div class="chips required-chips"><button type="button" class="chip selected" data-required="food" aria-pressed="true"><span data-icon="food"></span>Φαγητό</button><button type="button" class="chip" data-required="coffee" aria-pressed="false"><span data-icon="coffee"></span>Καφέ</button><button type="button" class="chip" data-required="bar" aria-pressed="false"><span data-icon="bar"></span>Μπαρ</button></div></fieldset>
+            <fieldset><legend>Θα μου άρεσε επίσης</legend><p class="field-hint">Βάζουμε πρώτα όσα σου ταιριάζουν.</p><div class="chips"><button type="button" class="chip" data-wanted="outdoor" aria-pressed="false">Έξω τραπεζάκια</button><button type="button" class="chip" data-wanted="quiet" aria-pressed="false">Ήρεμη ατμόσφαιρα</button><button type="button" class="chip" data-wanted="lively" aria-pressed="false">Ζωντάνια</button><button type="button" class="chip" data-wanted="live" aria-pressed="false">Live μουσική</button></div></fieldset>
+            <div class="field music-field"><label for="music"><span data-icon="music"></span>Μουσική που σου αρέσει</label><select id="music" name="music"><option value="any">Δεν έχω προτίμηση</option><option value="jazz">Jazz</option><option value="greek">Ελληνική</option><option value="electronic">Ηλεκτρονική</option><option value="pop">Pop</option></select></div>
+            <button type="submit" class="primary-button find-button">Βρες την έξοδό μου <span data-icon="arrow"></span></button>
+          </form>
+          <div class="filters-footnote"><span data-icon="clock"></span><p>Ελέγχουμε ξεχωριστά το ωράριο της κουζίνας,<br>για να βρίσκεις φαγητό την ώρα που θα πας.</p></div>
+        </aside>
+</dialog>
+  <dialog id="venue-dialog" aria-labelledby="dialog-title"><button class="dialog-close icon-button" id="close-dialog" aria-label="Κλείσιμο λεπτομερειών"><span data-icon="close"></span></button><div id="dialog-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript-message">Ενεργοποίησε JavaScript για να χρησιμοποιήσεις το διαδραστικό demo.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Local editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local previews, logs and caches
+.playwright-mcp/
+*.log
+__pycache__/
+*.py[cod]
+node_modules/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
